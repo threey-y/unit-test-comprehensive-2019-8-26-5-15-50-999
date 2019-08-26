@@ -20,9 +20,12 @@ public class Main {
             boolean checkLength =  CheckInputLength(arrLength);
             boolean checkNumber = CheckInputNumber(inputArr);
             boolean checkValue = checkLength & checkNumber;
+            if(checkValue == true){
             String[] rootArr = new String[]{"1","2","3","4"};
             String totalNum = TotalNum(inputArr,rootArr);
-            System.out.println(totalNum);
+            System.out.println(totalNum);}else {
+                System.out.println("输入错误，请重新输入！");
+            }
         }
     }
 
