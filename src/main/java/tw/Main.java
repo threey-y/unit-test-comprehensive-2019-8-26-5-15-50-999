@@ -20,7 +20,9 @@ public class Main {
             boolean checkLength =  CheckInputLength(arrLength);
             boolean checkNumber = CheckInputNumber(inputArr);
             boolean checkValue = checkLength & checkNumber;
-            System.out.println(checkValue);
+            String[] rootArr = new String[]{"1","2","3","4"};
+            String totalNum = TotalNum(inputArr,rootArr);
+            System.out.println(totalNum);
         }
     }
 
@@ -43,6 +45,11 @@ public class Main {
     }
 
     public static boolean CheckInputNumber(String[] inputArr){
+        for(int i = 0;i<inputArr.length;i++){
+            if(Integer.parseInt(inputArr[i])>=10){
+                return false;
+            }
+        }
         Set<String> set = new HashSet<String>();
         for(String str : inputArr) {
             set.add(str);
@@ -53,6 +60,25 @@ public class Main {
         }else {
             return true;//不重复
         }
+    }
+
+    public static String TotalNum(String[] inputArr, String[] rootArr){
+        int countA = 0;
+        int countB = 0;
+        Set<String> set = new HashSet<String>();
+        for(String str : rootArr) {
+            set.add(str);
+        }
+        for(int i = 0;i<inputArr.length;i++){
+            if(set.contains(inputArr[i]) == true){
+                countB++;
+                if(Integer.parseInt(inputArr[i]) == Integer.parseInt(rootArr[i])){
+                    countA++;
+                }
+            }
+
+        }
+        return countA+"A"+(countB-countA)+"B";
     }
 
 
